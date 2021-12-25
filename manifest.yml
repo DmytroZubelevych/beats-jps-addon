@@ -376,13 +376,13 @@ actions:
       
   removeAgent:
     - cmd [${this.affectedNodes}]: |-
-        service ${this.agentName} stop
-        rm -f /etc/sudoers.d/${this.agentName};
+        service ${this.agentName} stop  
         if which yum &>/dev/null; then
           yum -y remove ${this.agentName};
         else
           apt remove -y ${this.agentName};
         fi
+        rm -f /etc/sudoers.d/${this.agentName} /etc/${this.agentName};
       user: root
   
   configure:
