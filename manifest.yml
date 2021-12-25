@@ -376,7 +376,8 @@ actions:
       
   removeAgent:
     - cmd [${this.affectedNodes}]: |-
-        rm -f /etc/yum.repos.d/${this.agentName};
+        service ${this.agentName} stop
+        rm -f /etc/sudoers.d/${this.agentName};
         if which yum &>/dev/null; then
           yum -y remove ${this.agentName};
         else
@@ -389,11 +390,21 @@ actions:
       affectedNodes: ${targetNodes.nodeGroup}
       
   uninstallAllAgents:
-    cmd [target]: |-
-      if which yum &>/dev/null; then
-        yum -y remove filebeat journalbeat packetbeat metricbeat heartbeat
-      else
-        apt remove -y filebeat journalbeat packetbeat metricbeat heartbeat
-      fi
-      rm -f /etc/yum.repos.d/elastic.repo /etc/sudoers.d/*.beat$
-    user: root
+    - removeAgent:
+        agentName: filebeat
+        affectedNodes: ${targetNodes.nodeGroup}
+    - removeAgent:
+        agentName: journalbeat
+        affectedNodes: ${targetNodes.nodeGroup}
+    - removeAgent:
+        agentName: packetbeat
+        affectedNodes: ${targetNodes.nodeGroup}
+    - removeAgent:
+        agentName: metricbeat
+        affectedNodes: ${targetNodes.nodeGroup}
+    - removeAgent:
+        agentName: heartbeat-elastic
+        affectedNodes: ${targetNodes.nodeGroup}
+    - cmd [target]: |-
+        rm -f /etc/yum.repos.d/elastic.repo
+      user: root
