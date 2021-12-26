@@ -316,8 +316,10 @@ actions:
           user: root
         - if ('${settings.opensearchUser:}'):
             - cmd [${this.affectedNodes}]: |-
-                sed -i 's/#username:[[:space:]]*"elastic"/username: "${settings.opensearchUser}"/g' ${this.serviceConfigPath};
-                sed -i 's/#password:[[:space:]]*"changeme"/password: "${settings.opensearchPassword:}"/g' ${this.serviceConfigPath};
+                sed -i 's/#username[[:space:]]*:/username:/g' ${this.serviceConfigPath};
+                sed -i 's/#password[[:space:]]*:/password:/g' ${this.serviceConfigPath};
+                sed -i 's/username[[:space:]]*:.*/username: "${settings.opensearchUser}"/g' ${this.serviceConfigPath};
+                sed -i 's/password[[:space:]]*:.*/password: "${settings.opensearchPassword:}"/g' ${this.serviceConfigPath};
               user: root     
     - else:
         - cmd [${this.affectedNodes}]: |-
