@@ -327,12 +327,12 @@ actions:
                 sed -i 's/#password[[:space:]]*:/password:/g' ${this.serviceConfigPath};
                 sed -i 's/username[[:space:]]*:.*/username: "${settings.opensearchUser}"/g' ${this.serviceConfigPath};
                 sed -i 's/password[[:space:]]*:.*/password: "${settings.opensearchPassword:}"/g' ${this.serviceConfigPath};
-                sed -i 's/[[:space:]]*api_key[[:space:]]*:.*/  #api_key: "username"/g' ${this.serviceConfigPath};
+                sed -i 's/^[[:space:]]*api_key[[:space:]]*:.*/  #api_key: "id:key"/g' ${this.serviceConfigPath};
               user: root
         - else:
             - cmd [${this.affectedNodes}]: |-
-                sed -i 's/[[:space:]]*username[[:space:]]*:.*/  #username: "username"/g' ${this.serviceConfigPath};
-                sed -i 's/[[:space:]]*password[[:space:]]*:.*/  #password: "password"/g' ${this.serviceConfigPath};
+                sed -i 's/^[[:space:]]*username[[:space:]]*:.*/  #username: "username"/g' ${this.serviceConfigPath};
+                sed -i 's/^[[:space:]]*password[[:space:]]*:.*/  #password: "password"/g' ${this.serviceConfigPath};
               user: root
             - if ('${settings.apiKey:}'):
                 cmd [${this.affectedNodes}]: |-
