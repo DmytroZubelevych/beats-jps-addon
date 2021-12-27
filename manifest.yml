@@ -63,6 +63,12 @@ settings:
             name: opensearchPassword
             inputType: password
             width: 163
+        
+      - type: string
+        name: apiToken
+        caption: API Token (opt.)
+        placeholder: OpenSearch API Token
+        required: false
           
       - type: string
         name: osearchdashboardHost
@@ -131,6 +137,7 @@ onAfterClone:
       beatsossversion: ${settings.beatsossversion}
       opensearchUser: ${settings.opensearchUser}
       opensearchPassword: ${settings.opensearchPassword}
+      apiToken: ${settings.apiToken}
 
 onUninstall:
   uninstallAllAgents
