@@ -65,9 +65,9 @@ settings:
             width: 163
         
       - type: string
-        name: apiToken
-        caption: API Token (opt.)
-        placeholder: OpenSearch API Token
+        name: apiKey
+        caption: API Key (opt.)
+        placeholder: id:api_key
         required: false
           
       - type: string
@@ -137,7 +137,7 @@ onAfterClone:
       beatsossversion: ${settings.beatsossversion}
       opensearchUser: ${settings.opensearchUser}
       opensearchPassword: ${settings.opensearchPassword}
-      apiToken: ${settings.apiToken}
+      apiKey: ${settings.apiKey}
 
 onUninstall:
   uninstallAllAgents
