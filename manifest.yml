@@ -67,7 +67,7 @@ settings:
       - type: string
         name: osearchdashboardHost
         caption: OpenSearch Dashboards Host (opt.)
-        placeholder: 0.0.0.0:5601
+        placeholder: 0.0.0.0:80
         required: false
       
       - type: string
