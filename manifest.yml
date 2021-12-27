@@ -327,7 +327,18 @@ actions:
                 sed -i 's/#password[[:space:]]*:/password:/g' ${this.serviceConfigPath};
                 sed -i 's/username[[:space:]]*:.*/username: "${settings.opensearchUser}"/g' ${this.serviceConfigPath};
                 sed -i 's/password[[:space:]]*:.*/password: "${settings.opensearchPassword:}"/g' ${this.serviceConfigPath};
-              user: root     
+                sed -i 's/[[:space:]]*api_key[[:space:]]*:.*/#api_key: "username"/g' ${this.serviceConfigPath};
+              user: root
+        - else:
+            - cmd [${this.affectedNodes}]: |-
+                sed -i 's/[[:space:]]*username[[:space:]]*:.*/#username: "username"/g' ${this.serviceConfigPath};
+                sed -i 's/[[:space:]]*password[[:space:]]*:.*/#password: "password"/g' ${this.serviceConfigPath};
+              user: root
+            - if ('${settings.opensearchUser:}'):
+                cmd [${this.affectedNodes}]: |-
+                  sed -i 's/#api_key[[:space:]]*:/api_key:/g' ${this.serviceConfigPath};
+                  sed -i 's/api_key[[:space:]]*:.*/api_key: "${settings.apiKey}"/g' ${this.serviceConfigPath};
+                user: root
     - else:
         - cmd [${this.affectedNodes}]: |-
             sed -i 's/^[[:space:]]*output.elasticsearch:/#output.elasticsearch:/g' ${this.serviceConfigPath};
@@ -340,7 +351,7 @@ actions:
               user: root
         - else:
             - cmd [${this.affectedNodes}]: |-
-                sed -i 's/[#]*hosts:[[:space:]]*\[".*:5044"\]/hosts: \["localhost:5044"\]/g' ${this.serviceConfigPath};
+                sed -i 's/[#]*hosts:[[:space:]]*\[".*:5044"\]/#hosts: \["localhost:5044"\]/g' ${this.serviceConfigPath};
               user: root
     - if ('${settings.osearchdashboardHost:}'):
         - cmd [${this.affectedNodes}]: |-
@@ -348,7 +359,7 @@ actions:
           user: root
     - else:
         - cmd [${this.affectedNodes}]: |-
-            sed -i 's/host[[:space:]]*:.*/#host: \["localhost:5061"\]/g' ${this.serviceConfigPath};
+            sed -i 's/[[:space:]]*host[[:space:]]*:.*/#host: \["localhost:5061"\]/g' ${this.serviceConfigPath};
           user: root
     - cmd [${this.affectedNodes}]: |-
         if which jem; then jem filemanager extendperm; else true; fi
