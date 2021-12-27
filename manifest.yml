@@ -323,21 +323,21 @@ actions:
           user: root
         - if ('${settings.opensearchUser:}'):
             - cmd [${this.affectedNodes}]: |-
-                sed -i 's/#username[[:space:]]*:/username:/g' ${this.serviceConfigPath};
-                sed -i 's/#password[[:space:]]*:/password:/g' ${this.serviceConfigPath};
-                sed -i 's/username[[:space:]]*:.*/username: "${settings.opensearchUser}"/g' ${this.serviceConfigPath};
-                sed -i 's/password[[:space:]]*:.*/password: "${settings.opensearchPassword:}"/g' ${this.serviceConfigPath};
-                sed -i 's/^[[:space:]]*api_key[[:space:]]*:.*/  #api_key: "id:key"/g' ${this.serviceConfigPath};
+                sed -i '1s/#username[[:space:]]*:/username:/g' ${this.serviceConfigPath};
+                sed -i '1s/#password[[:space:]]*:/password:/g' ${this.serviceConfigPath};
+                sed -i '1s/username[[:space:]]*:.*/username: "${settings.opensearchUser}"/g' ${this.serviceConfigPath};
+                sed -i '1s/password[[:space:]]*:.*/password: "${settings.opensearchPassword:}"/g' ${this.serviceConfigPath};
+                sed -i '1s/^[[:space:]]*api_key[[:space:]]*:.*/  #api_key: "id:key"/g' ${this.serviceConfigPath};
               user: root
         - else:
             - cmd [${this.affectedNodes}]: |-
-                sed -i 's/^[[:space:]]*username[[:space:]]*:.*/  #username: "username"/g' ${this.serviceConfigPath};
-                sed -i 's/^[[:space:]]*password[[:space:]]*:.*/  #password: "password"/g' ${this.serviceConfigPath};
+                sed -i '1s/^[[:space:]]*username[[:space:]]*:.*/  #username: "username"/g' ${this.serviceConfigPath};
+                sed -i '1s/^[[:space:]]*password[[:space:]]*:.*/  #password: "password"/g' ${this.serviceConfigPath};
               user: root
             - if ('${settings.apiKey:}'):
                 cmd [${this.affectedNodes}]: |-
-                  sed -i 's/#api_key[[:space:]]*:/api_key:/g' ${this.serviceConfigPath};
-                  sed -i 's/api_key[[:space:]]*:.*/api_key: "${settings.apiKey}"/g' ${this.serviceConfigPath};
+                  sed -i '1s/#api_key[[:space:]]*:/api_key:/g' ${this.serviceConfigPath};
+                  sed -i '1s/api_key[[:space:]]*:.*/api_key: "${settings.apiKey}"/g' ${this.serviceConfigPath};
                 user: root
     - else:
         - cmd [${this.affectedNodes}]: |-
