@@ -337,11 +337,11 @@ actions:
               user: root
     - if ('${settings.osearchdashboardHost:}'):
         - cmd [${this.affectedNodes}]: |-
-            sed -i 's/[#]*host:[[:space:]]*".*:5601"/host: "${settings.osearchdashboardHost}"/g' ${this.serviceConfigPath};
+            sed -i 's/[#]*host[[:space:]]*:.*/host: "${settings.osearchdashboardHost}"/g' ${this.serviceConfigPath};
           user: root
     - else:
         - cmd [${this.affectedNodes}]: |-
-            sed -i 's/hosts:[[:space:]]*\[".*:5061"\]/#hosts: \["localhost:5061"\]/g' ${this.serviceConfigPath};
+            sed -i 's/host[[:space:]]*:.*/#host: \["localhost:5061"\]/g' ${this.serviceConfigPath};
           user: root
     - cmd [${this.affectedNodes}]: |-
         if which jem; then jem filemanager extendperm; else true; fi
