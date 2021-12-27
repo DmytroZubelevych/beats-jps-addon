@@ -64,6 +64,12 @@ settings:
           width: 163
           
     - type: string
+      name: apiToken
+      caption: API Token (opt.)
+      placeholder: OpenSearch API Token
+      required: false
+          
+    - type: string
       name: osearchdashboardHost
       caption: OpenSearch Dashboards Host (opt.)
       placeholder: 0.0.0.0:80
@@ -176,4 +182,5 @@ onInstall:
         beatsossversion: ${settings.beatsossversion}
         opensearchUser: ${settings.opensearchUser}
         opensearchPassword: ${settings.opensearchPassword}
+        apiToken: ${settings.apiToken}
       jps: manifest.yml
