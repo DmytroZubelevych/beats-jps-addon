@@ -402,7 +402,7 @@ actions:
         else
           apt remove -y ${this.agentName};
         fi
-        rm -f /etc/sudoers.d/${this.agentName} /etc/${this.agentName};
+        rm -rf /etc/sudoers.d/${this.agentName} /etc/${this.agentName};
       user: root
   
   configure:
