@@ -152,9 +152,9 @@ onBeforeInit: |
   }
 
   if (envs.length > 0) {
-    jps.settings.fields[7].values = envs;
-    jps.settings.fields[7].value = envs[0].value;
-    jps.settings.fields[8].showIf.specificNodeGroups[0].dependsOn.envName = nodes;
+    jps.settings.fields[8].values = envs;
+    jps.settings.fields[8].value = envs[0].value;
+    jps.settings.fields[9].showIf.specificNodeGroups[0].dependsOn.envName = nodes;
   }
 
   return { result: 0, settings: jps.settings };
