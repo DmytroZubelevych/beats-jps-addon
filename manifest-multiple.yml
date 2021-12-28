@@ -1,16 +1,3 @@
-type: install
-name: Elastic Beats Multiple
-id: elasticbeats-multiple
-
-logo: https://raw.githubusercontent.com/DmytroZubelevych/beats-jps-addon/master/elastic-beats.png
-description:
-  short: 'Elastic Beats: Lightweight data shippers'
-  text: |
-    Beats is a free and open platform for single-purpose data shippers. They send data from nodes of your environments to Logstash or OpenSearch (Elasticsearch).
-homepage: https://www.elastic.co/beats/
-
-baseUrl: https://raw.githubusercontent.com/DmytroZubelevych/beats-jps-addon/master/
-
 settings:
   fields:
     - type: checkboxlist
@@ -45,14 +32,19 @@ settings:
       required: false
       
     - type: compositefield
-      caption: Credentials (optional)
+      caption: Credentials (opt.)
       defaultMargins: 0 10 0 0
       items:
+        - type: displayfield
+          cls: x-form-item-label
+          value: User
+          width: 30
+        
         - type: string
           name: opensearchUser
-          placeholder: User
-          width: 200
-
+          placeholder: OpenSearch username
+          width: 180
+            
         - type: displayfield
           cls: x-form-item-label
           value: Password
@@ -60,8 +52,9 @@ settings:
 
         - type: string
           name: opensearchPassword
+          placeholder: password
           inputType: password
-          width: 163
+          width: 153
           
     - type: string
       name: apiKey
@@ -72,7 +65,7 @@ settings:
     - type: string
       name: osearchdashboardHost
       caption: OpenSearch Dashboards Host (opt.)
-      placeholder: 0.0.0.0:80
+      placeholder: 0.0.0.0:5601
       required: false
       
     - type: string
