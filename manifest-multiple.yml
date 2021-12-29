@@ -1,5 +1,5 @@
 type: install
-name: Elastic Beats Multiple
+name: Elastic Beats Add-on
 id: elasticbeats-multiple
 
 logo: https://raw.githubusercontent.com/DmytroZubelevych/beats-jps-addon/master/elastic-beats.png
