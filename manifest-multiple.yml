@@ -14,7 +14,7 @@ baseUrl: https://raw.githubusercontent.com/DmytroZubelevych/beats-jps-addon/mast
 settings:
   fields:
     - type: checkboxlist
-      caption: Installed agents
+      caption: Installed Agents
       name: options
       columns: 2
       values:
