@@ -15,7 +15,7 @@ settings:
   main:
     fields:
       - type: checkboxlist
-        caption: Installed agents
+        caption: Installed Agents
         name: options
         columns: 2
         values:
@@ -90,7 +90,7 @@ settings:
       
       - type: list
         name: beatsossversion
-        caption: Beats OSS version
+        caption: Beats OSS Version
         values:
           7.12.1: 7.12.1
           latest: latest
