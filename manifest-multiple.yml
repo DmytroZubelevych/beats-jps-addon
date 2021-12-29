@@ -55,12 +55,12 @@ settings:
 
     - type: string
       name: opensearchHost
-      caption: OpenSearch Host (opt.)
+      caption: OpenSearch Host
       placeholder: 0.0.0.0:9200
       required: false
       
     - type: compositefield
-      caption: Credentials (opt.)
+      caption: Credentials
       defaultMargins: 0 10 0 0
       items:
         - type: displayfield
@@ -86,19 +86,19 @@ settings:
           
     - type: string
       name: apiKey
-      caption: API Key (opt.)
+      caption: API Key
       placeholder: id:api_key
       required: false
           
     - type: string
       name: osearchdashboardHost
-      caption: OpenSearch Dashboards Host (opt.)
+      caption: OpenSearch Dashboards Host
       placeholder: 0.0.0.0:5601
       required: false
       
     - type: string
       name: logstashHost
-      caption: Logstash Host (opt.)
+      caption: Logstash Host
       placeholder: 0.0.0.0:5044
       required: false
           
