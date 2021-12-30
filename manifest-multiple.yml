@@ -48,10 +48,7 @@ settings:
       hideLabel: false
       hidden: false
         
-    - caption: Optional Parameters
-      type: displayfield
-      name: displayfield
-      hidden: false
+    - type: spacer
 
     - type: string
       name: opensearchHost
