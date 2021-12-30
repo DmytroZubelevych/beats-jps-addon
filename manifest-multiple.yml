@@ -54,10 +54,12 @@ settings:
       name: opensearchHost
       caption: OpenSearch Host
       placeholder: 0.0.0.0:9200
+      tooltip: (Optional) IP (of hostname) nad port (default is 5601) of the OpenSearch node (if the data is put there directly through the OpenSearch API)
       required: false
       
     - type: compositefield
       caption: Credentials
+      tooltip: (Optional) Username and password for interacting with OpenSearch and OpenSearch Dashboards node
       defaultMargins: 0 10 0 0
       items:
         - type: displayfield
@@ -84,18 +86,21 @@ settings:
     - type: string
       name: apiKey
       caption: API Key
+      tooltip: (Optional) API key for interacting with OpenSearch and OpenSearch Dashboards node (not used if user and password are set)
       placeholder: id:api_key
       required: false
           
     - type: string
       name: osearchdashboardHost
       caption: OpenSearch Dashboards Host
+      tooltip: (Optional) IP (or hostname) and port (default is 80) of OpenSearch Dashboards host. OpenSearch credentials are used for authentication.
       placeholder: 0.0.0.0:5601
       required: false
       
     - type: string
       name: logstashHost
       caption: Logstash Host
+      tooltip: (Optional) IP (or hostname) and port (default is 5044) of Logstash node. Credentials are not needed to be specified for Logstash output.
       placeholder: 0.0.0.0:5044
       required: false
           
