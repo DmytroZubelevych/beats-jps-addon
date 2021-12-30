@@ -59,7 +59,7 @@ settings:
       
     - type: compositefield
       caption: Credentials
-      tooltip: Optional parameters: Username and password credentials for connecting to the OpenSearch and OpenSearch Dashboards nodes.
+      tooltip: Optional parameters: username and password credentials for connecting to the OpenSearch and OpenSearch Dashboards nodes.
       defaultMargins: 0 10 0 0
       items:
         - type: displayfield
